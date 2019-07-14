@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'Roboto-Medium';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/static/fonts/roboto/Roboto-Medium.woff2) format('woff');
+}
+
+.content {
+  margin: auto;
+  padding-left: 10%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+nav {
+  font-family: 'Roboto-Medium';
+  background-color: #1e638c;
+  text-shadow: 0px 2px 3px rgba(0,0,0,0.4),
+               0px 6px 13px rgba(0,0,0,0.1),
+               0px 16px 23px rgba(0,0,0,0.1);
+}
+
+.tabs {
+  font-family: 'Roboto-Medium';
+  text-shadow: 0px 2px 3px rgba(0,0,0,0.4),
+               0px 6px 13px rgba(0,0,0,0.1),
+               0px 16px 23px rgba(0,0,0,0.1);
+}
+
+.add {
+    color: white;
+    padding: 10px;
+    text-shadow: 0px 2px 3px rgba(0,0,0,0.4),
+                 0px 6px 13px rgba(0,0,0,0.1),
+                 0px 16px 23px rgba(0,0,0,0.1);
+}
+
+.field {
+  width: 85%;
+  font-family: 'Roboto-Medium';
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  padding: 20px;
+}
+
+.field:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.count {
+  text-shadow: 0px 2px 3px rgba(0,0,0,0.4),
+               0px 6px 13px rgba(0,0,0,0.1),
+               0px 16px 23px rgba(0,0,0,0.1);
+}
+
+.input {
+  width: 100%;
+  border-bottom: red;
+}
+
+.field-label {
+  font-size: 30px;
+  width: 20%;
+  cursor: pointer;
+}
+
+
+.btn {
+  width: 45%;
+  max-width: 50%;
+  padding: 0;
+  background-color: #1e638c;
+}
+
+.btn:hover {
+  background-color: #134563;
+}
+
+.btn-remove {
+  float: right;
+}
+
+.btn-remove:hover {
+  background-color: #8c1e1e;
+}

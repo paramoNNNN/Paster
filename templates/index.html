@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/materialize.css">
+    <link href="/static/materialicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/jquery-3.2.1.js"></script>
+    <script src="/static/materialize.js"></script>
+    <script src="/static/script.js"></script>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <!-- Modal Structure -->
+    <!-- <div id="modal1" class="modal bottom-sheet">
+      <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+      </div>
+    </div> -->
+
+    <nav>
+      <div class="nav-wrapper">
+        <a class="brand-logo waves-effect waves-light"><i class="material-icons" style="font-size:50px;">content_paste</i>Paster</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add new field to current tab" id="add"><i class="material-icons">add</i></a></li>
+          <li><a class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Enable all fields in current tab" id="check_all"><i class="material-icons">check_box</i></a></li>
+          <li><a class="waves-effect waves-light tooltipped" data-position="bottom" data-delay="50" data-tooltip="Disable all fields in current tab" id="uncheck_all"><i class="material-icons">check_box_outline_blank</i></a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- <div class="card">
+      <div class="card-content">
+      </div> -->
+      <div class="card-tabs">
+        <ul class="tabs tabs-fixed-width">
+          {% for tab in tabs.find() %}
+              {% if tab.status == True %}
+                <li class="tab" tabnum="{{ loop.index }}"><a href="#tab{{ loop.index }}" id="{{ tab._id }}" class="active waves-effect tab-btn">{{ tab.title }}</a></li>
+              {% else %}
+                <li class="tab" tabnum="{{ loop.index }}"><a href="#tab{{ loop.index }}" id="{{ tab._id }}" class="waves-effect tab-btn">{{ tab.title }}</a></li>
+              {% endif %}
+          {% endfor %}
+          <li class="waves-effect waves-light add tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add new tab" id="tab_add"><i class="material-icons">add</i></li>
+        </ul>
+      </div>
+
+      <div class="card-content grey lighten-4">
+        {% for tab in tabs.find() %}
+          <div class="tabb" id="tab{{ loop.index }}">
+            <div class="content" id="content">
+              {% for field in tab.fields %}
+                {% if field.status == True %}
+                  <div class="field" id="i{{ field.Id | int }}">
+                    <input type="hidden" class="type" value="exist">
+                    <p class="field-label count">{{ field.Id | int }}</p>
+
+                    <div class="input-field col s12">
+                      <input id="name" type="text" value="{{ field.name }}">
+                      <label for="name">Name</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                      <input id="text" type="text" value="{{ field.paste_text }}">
+                      <label for="text">Text to paste</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                      <input id="paste_count" type="number" min="1" value="{{ field.paste_count | int }}">
+                      <label for="paste_count">Paste count</label>
+                    </div>
+
+                    <div class="button-field">
+                      <a class="waves-effect waves-light btn btn-save" index="{{ field.Id | int }}">Save</a>
+                      <a class="waves-effect waves-light btn btn-remove" index="{{ field.Id | int }}">Remove</a>
+                   </div>
+
+                  </div>
+                {% else %}
+                  <div class="field" id="{{ field.Id | int }}">
+                    <input type="hidden" name="type" value="exist">
+                    <p class="field-label count">{{ field.Id | int }}</p>
+
+                    <div class="input-field col s12">
+                      <input id="name" type="text" value="{{ field.name }}" disabled="disabled">
+                      <label for="name" disabled="disabled">Name</label>
+                    </div>
+
+                    <div class="input-field col s12" disabled="disabled">
+                      <input id="text" type="text" value="{{ field.paste_text }}" disabled="disabled">
+                      <label for="text" disabled="disabled">Text to paste</label>
+                    </div>
+
+                    <div class="input-field col s12" disabled="disabled">
+                      <input id="paste_count" type="number" min="1" value="{{ field.paste_count | int }}" disabled="disabled">
+                      <label for="paste_count" disabled="disabled">Paste count</label>
+                    </div>
+
+                    <div class="button-field" disabled="disabled">
+                      <a class="waves-effect waves-light btn btn-save" index="{{ field.Id | int }}" disabled="disabled">Save</a>
+                      <a class="waves-effect waves-light btn btn-remove" index="{{ field.Id | int }}" disabled="disabled">Remove</a>
+                   </div>
+
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+
+
+
+
+  </body>
+</html>
